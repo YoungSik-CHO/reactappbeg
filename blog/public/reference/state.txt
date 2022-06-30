@@ -1,0 +1,25 @@
+변수랑 state의 가장큰 차이점
+
+=> 
+    state을 쓰던 html은 자동으로 재렌더링이 됨
+    
+
+state 변경함수(setState) 특징
+1. setState는 기존객체와 변경객체가 같으면 작동하지 않음
+2. array 와 object는 reference data type을 가짐
+3. reference data type이란 값은 RAM에 저장을 해두록 선언된 변수는
+   저장된 값의 화살표(참조)만 가지고 있음을 뜻함.
+4. 내가 만약에 arr[0] = '123' 을 새로 선언하여서
+5. arr 전체를 출력하면 값이 바뀌어 보이지만
+   arr은 값의 화살표만 가지고 있으므로 그 화살표(참조)는 바뀌지 않았기 때문에
+6. setState를 실행하면 변수가 같다고 인식 후 변경하지 않음.
+
+
+let [title, setTitle] = useState(0);
+위와같이 선언한다면
+title에는 초기값인 0 
+setTitle 에는 title값을 변경해줄수 있는 함수가 선언된다
+ex) setTitle(1) 쓰면 title은 1로 바뀜
+   
+
+

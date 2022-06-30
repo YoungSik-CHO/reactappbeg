@@ -1,0 +1,21 @@
+Destructuring 이란
+
+Array 자료를 변수 1곳에 저장
+let num = [1,2,3];
+변수 안에서 개별값을 빼서 사용하기
+
+let a = num[0]
+let c = num[1]
+이런식
+
+위와같은 문법을 더 편하게 사용하기 위해서
+
+let [a,c] = [1,2];
+로 선언하면
+a는 1 , c는 2가 대입됨
+
+let [object, f] = useState('남자 코트 추천')
+=> useState는 [?, ?] 형식으로 리턴됨
+
+
+
