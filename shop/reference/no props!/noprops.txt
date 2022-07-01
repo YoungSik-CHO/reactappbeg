@@ -1,0 +1,4 @@
+props 쓰기 싫으면
+
+1. Context API
+2. 외부라이브러리 (redux 등등)

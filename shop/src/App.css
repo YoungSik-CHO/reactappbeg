@@ -20,6 +20,15 @@
   /* background-image: url(./bg.png); */
 }
 
+/* animation class */
+.start {
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  /* opacity가 변경될때 0.5s에 걸쳐서 변경해주세요 */
+  transition: opacity 0.5s; 
+}
 
 .App-header {
   background-color: #282c34;
