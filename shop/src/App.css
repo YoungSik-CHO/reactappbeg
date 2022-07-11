@@ -53,3 +53,7 @@
     transform: rotate(360deg);
   }
 }
+
+.ms-auto {
+  color : white;
+}

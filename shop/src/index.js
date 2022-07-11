@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux/es/exports';
 import store from './store.js'
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+
+// 실시간 데이터를 가져오기위한 react-query
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,11 +19,13 @@ root.render(
   // => 디버깅때매 두번실행되고 실제 release 되면 한번 실행됨
   // 그거 싫으면 <React.StrictMode> 이거 빼면 개발할때도 1번 실행됨
   // <React.StrictMode>
-  <Provider store={store}> 
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
+  <QueryClientProvider client={queryClient}>
+    <Provider store={store}> 
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </QueryClientProvider>
   // </React.StrictMode>
 );
 

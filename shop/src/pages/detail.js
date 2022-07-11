@@ -1,8 +1,10 @@
 import  {useParams}  from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import  data  from '../data.js';
 import styled from 'styled-components';
 import { useContext, useEffect, useState } from 'react';
 import { Nav } from 'react-bootstrap';
+import { add } from '../store/stockSlice.js'
 
 // import {Context1} from './../App.js'
 
@@ -19,6 +21,10 @@ let YellowBtn =  styled.button`
  `
 
 let Detail = (props) => {
+
+
+    let dispatch = useDispatch();
+
 
     // let {stork} = useContext(Context1);
 
@@ -68,6 +74,15 @@ let Detail = (props) => {
         if (v.id == id)
             return true
     }) 
+    // 최근본항목을 localstorage.watched에 추가
+    useEffect(() => {    
+        let watched = localStorage.getItem('watched')
+        watched = JSON.parse(watched);
+        watched.push(datafilter[0].id);
+        watched = new Set(watched)
+        watched = Array.from(watched);
+        localStorage.setItem('watched', JSON.stringify(watched))
+    }, [])
 
     // 입력한 Input 태그가 숫자인지 아닌지 판별하는 함수
     // 이거말고 useEffect(() => {}, [IsNumber])
@@ -96,7 +111,9 @@ let Detail = (props) => {
                 <h4 className="pt-5">{datafilter[0].title}</h4>
                 <p>{datafilter[0].content}</p>
                 <p>{datafilter[0].price}</p>
-                <button className="btn btn-danger">주문하기</button> 
+                <button className="btn btn-danger" onClick={() => {
+                    dispatch(add(datafilter[0]))
+                }}>주문하기</button> 
             </div>
         </div>
             {/* react-bootstrap 기반 탭 UI */}
